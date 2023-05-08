@@ -3,10 +3,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-@immutable
 class MapUtils {
-  const MapUtils._();
-
   static Uri createQueryUri(String query) {
     Uri uri;
 

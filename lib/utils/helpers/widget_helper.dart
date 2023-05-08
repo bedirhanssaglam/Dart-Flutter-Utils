@@ -3,10 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-@immutable
 class WidgetHelper {
-  const WidgetHelper._();
-
   Widget platformIndicator() {
     return Center(
       child: Platform.isIOS

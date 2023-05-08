@@ -1,11 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-@immutable
 class LauncherUtils {
-  const LauncherUtils._();
-
   static String? getSocialLinks(String? url) {
     if (url != null && url.isNotEmpty) {
       url = url.contains("https://www") || url.contains("http://www")
@@ -17,7 +16,7 @@ class LauncherUtils {
     } else {
       return null;
     }
-    print('Launching URL : $url');
+    log('Launching URL : $url');
     return url;
   }
 
@@ -29,7 +28,7 @@ class LauncherUtils {
     if (await canLaunchUrl(uri)) {
       await launchURL(url);
     } else {
-      print('Could not launch $url');
+      log('Could not launch $url');
     }
   }
 

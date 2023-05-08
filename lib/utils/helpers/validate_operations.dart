@@ -1,11 +1,6 @@
-import 'package:flutter/foundation.dart' show immutable;
-
 import '../constants/string_constants.dart';
 
-@immutable
 class ValidateOperations {
-  const ValidateOperations._();
-
   bool _isNumeric(String value) {
     for (int i = 0; i < value.length; i++) {
       if (double.tryParse(value[i]) != null) {

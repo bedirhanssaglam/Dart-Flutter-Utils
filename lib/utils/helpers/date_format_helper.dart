@@ -1,11 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart' show immutable;
 import '../enums/country_enums.dart';
 
-@immutable
 class DateFormatHelper {
-  const DateFormatHelper._();
-
   static DateFormat toNameOfMonth({bool fullName = false}) {
     final DateFormat format = fullName
         ? DateFormat.MMMM(CountryEnums.tr.languageCode)

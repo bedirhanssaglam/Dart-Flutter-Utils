@@ -1,11 +1,6 @@
-import 'package:flutter/foundation.dart';
-
 import 'typedefs.dart';
 
-@immutable
 class StringUtils {
-  const StringUtils._();
-
   String enumToString(dynamic input) {
     return input.toString().split('.').last;
   }
