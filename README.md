@@ -191,9 +191,7 @@ mixin SingletonMixin {
 📂 lib
    📂 utils   
     📂 constants
-       📄 string_constants.dart
-       📄 {auth_event}.dart
-       📄 {auth_state}.dart     
+       📄 string_constants.dart  
     📂 enums
        📄 country_enums.dart
        📄 network_result_enums.dart
