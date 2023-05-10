@@ -49,7 +49,7 @@ You can check some user inputs.
 
 ### Widget Utils
 
-You will want to use platform-specific widgets or ready-made widgets
+You will want to use platform-specific widgets or ready-made widgets.
 
 ```dart
  Widget platformIndicator() {
@@ -110,6 +110,43 @@ extension IsNotZeroExtension on num {
 }
 ```
 
+### Iterable Extensions
+
+```dart
+extension IterableExtension<E> on Iterable<E> {
+  E? firstWhereIndexedOrNull(bool Function(int index, E element) test) {
+    var index = 0;
+    for (var element in this) {
+      if (test(index++, element)) return element;
+    }
+    return null;
+  }
+
+  Iterable<T> mapIndexed<T>(T Function(int i, E e) f) {
+    int index = -1;
+    return map((e) => f(++index, e));
+  }
+
+  E? get lastOrNull => isNotEmpty ? last : null;
+}
+```
+
+### Color Extensions
+
+```dart
+extension ColorExtensions on Color {
+  Color lighten([double amount = .1]) {
+    assert(amount >= 0 && amount <= 1);
+
+    final hslColor = HSLColor.fromColor(this);
+    final hslLight =
+        hslColor.withLightness((hslColor.lightness + amount).clamp(0.0, 1.0));
+
+    return hslLight.toColor();
+  }
+}
+```
+
 ### Date Format
 
 ```dart
@@ -139,8 +176,6 @@ typedef JsonMap = Map<String, dynamic>;
 ```
 
 ### Stateful Mixin
-
-This extension only uses to draw the border.
 
 ```dart
 mixin StatefulMixin<T extends StatefulWidget> on State<T> {
@@ -176,8 +211,6 @@ mixin StatefulMixin<T extends StatefulWidget> on State<T> {
 
 ### Singleton Mixin
 
-This extension can be used to create native widgets.
-
 ```dart
 mixin SingletonMixin {
   WidgetsBinding get widgetsBinding => WidgetsBinding.instance;
@@ -205,6 +238,7 @@ mixin SingletonMixin {
        📄 widget_extensions.dart
     📂 helpers
        📄 date_format_helper.dart
+       📄 form_number_format.dart
        📄 launcher_utils.dart
        📄 map_utils.dart
        📄 string_utils.dart
