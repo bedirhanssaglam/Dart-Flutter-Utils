@@ -4,14 +4,21 @@ extension ListExtensions<E> on List<E> {
   List<T> mapToList<T>(T Function(E e) toElement) => map<T>(toElement).toList();
 }
 
-extension IterableExtension<T> on Iterable<T> {
-  T? firstWhereIndexedOrNull(bool Function(int index, T element) test) {
+extension IterableExtension<E> on Iterable<E> {
+  E? firstWhereIndexedOrNull(bool Function(int index, E element) test) {
     var index = 0;
     for (var element in this) {
       if (test(index++, element)) return element;
     }
     return null;
   }
+
+  Iterable<T> mapIndexed<T>(T Function(int i, E e) f) {
+    int index = -1;
+    return map((e) => f(++index, e));
+  }
+
+  E? get lastOrNull => isNotEmpty ? last : null;
 }
 
 extension UnaryNumber on List<Object> {

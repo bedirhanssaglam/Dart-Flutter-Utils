@@ -28,6 +28,11 @@ class StringUtils {
     return "${number.split(".").first}.${number.split(".")[1].substring(0, 2)}";
   }
 
+  String toSnakeCase(String value) {
+    return value.replaceAllMapped(
+        RegExp(r'[A-Z]'), (Match match) => '_${match[0]?.toLowerCase()}');
+  }
+
   String printMap(JsonMap map) {
     String str = '';
     map.forEach((key, value) => str += '$key: ${value.toString}, ');
